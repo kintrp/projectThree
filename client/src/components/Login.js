@@ -22,7 +22,7 @@ export default class Login extends Component {
 					})
 				} else {
 					this.props.setUser(response);
-					this.props.history.push('/animals');
+					this.props.history.push('/animals/private');
 				}
 			})
 	}
@@ -35,7 +35,7 @@ export default class Login extends Component {
     }
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         return (
         <div>
             <h1>Plz login here... </h1>

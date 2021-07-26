@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const Animal = require('../models/Animal.model');
+const fileUploader = require('../config/cloudinary.config');
 
-// Route: list ALL animals 
+// Route: list ALL animals, independently from user
 
-router.get('/animals', (req, res, next) => {
+router.get('/list', (req, res, next) => {
     Animal.find() 
     .then(animals => {
         res.status(200).json(animals);
@@ -16,6 +17,7 @@ router.get('/animals', (req, res, next) => {
 // Route: display animal details
 
 router.get('/:id', (req, res, next) => {
+    console.log('Test', req.user)
     Animal.findById(req.params.id)
     .then(animal => {
         if (!animal) {
@@ -40,7 +42,8 @@ router.post('/add', (req, res, next) => {
         sex,
         description, 
         city,
-        castrated
+        castrated,
+        owner: req.user._id,
     })
     .then(animal => {
         console.log(animal)
@@ -56,6 +59,7 @@ router.post('/add', (req, res, next) => {
 router.delete('/:id', (res, req, next) => {
     Animal.findByIdAndDelete(req.params.id)
     .then (()=> {
+    console.log('delete', req.params.id)
         res.status(200).json({message:'project deleted'});
     })
     .catch(err => {
