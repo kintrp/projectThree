@@ -35,11 +35,13 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/add', (req, res, next) => {
     console.log(req.body)
-    const {name, species, sex, description, city, castrated} = req.body;
+    const {name, species, sex, age, description, city, castrated, imageUrl} = req.body;
     Animal.create ({
+        imageUrl,
         name, 
         species,
         sex,
+        age,
         description, 
         city,
         castrated,
@@ -56,15 +58,32 @@ router.post('/add', (req, res, next) => {
 
 // Route: delete ONE animal
 
-router.delete('/:id', (res, req, next) => {
+router.delete('/:id', (req, res, next) => {
+    console.log(req.params.id)
     Animal.findByIdAndDelete(req.params.id)
     .then (()=> {
     console.log('delete', req.params.id)
-        res.status(200).json({message:'project deleted'});
+        res.status(200).json({message:' animal deleted'});
     })
     .catch(err => {
         next(err);
     })
 });
 
+// Route: FileUpload
+
+router.post('/upload', fileUploader.single('imageUrl'), (req, res, next) => {
+    // console.log('file is: ', req.file)
+   
+    if (!req.file) {
+      next(new Error('No file uploaded!'));
+      return;
+    }
+   
+    res.json({ secure_url: req.file.path });
+  });
+
 module.exports = router;
+
+
+

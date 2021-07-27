@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
 const animalSchema = new Schema ({
-    // imageUrl: {
-    //     type: String,
-    //     required: true,
-    // }
+    imageUrl: {
+        type: String,
+        required: true,
+    },
     name: {
         type: String,
         required: true,
@@ -16,6 +16,10 @@ const animalSchema = new Schema ({
     },
     sex: {
         type: String,
+        required: true,
+    },
+    age: {
+        type: Number,
         required: true,
     },
     description: {

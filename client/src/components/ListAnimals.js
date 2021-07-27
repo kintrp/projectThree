@@ -6,14 +6,23 @@ export default class ListAnimals extends Component {
 
     state = {
         animals: [],
-        query: '',
+        queryCity: '',
+        querySpecies: '',
+    }
+
+    handleInputC = e => {
+        const userInput = e.target.value;
+        console.log(userInput)
+        this.setState({
+          queryCity: userInput
+        });
     }
 
     handleInput = e => {
         const userInput = e.target.value;
         console.log(userInput)
         this.setState({
-          query: userInput
+            querySpecies: userInput
         });
     }
 
@@ -35,39 +44,77 @@ export default class ListAnimals extends Component {
     render() {
 
         // Turning query into lowercase and saving it to new Variable
-        const cityLowerCase = this.state.query.toLowerCase();
+        const cityLowerCase = this.state.queryCity.toLowerCase();
+        const speciesLowerCase = this.state.querySpecies.toLowerCase();
 
         // If query equals to city in animals array, push into filteredByCity
         const filteredByCity = [];
         for (let i = 0; i < this.state.animals.length; i++) {
-            if (this.state.animals[i].city.toLowerCase().includes(cityLowerCase)) {
-                
+
+            if ((this.state.animals[i].city.toLowerCase().includes(cityLowerCase)) 
+                && (this.state.animals[i].species.toLowerCase().includes(speciesLowerCase))) { 
                 filteredByCity.push(this.state.animals[i])
             }
         }
+
         console.log(filteredByCity)
+
+
+        // for (let i = 0; i < this.state.animals.length; i++) {
+        //     if (this.state.animals[i].city.toLowerCase().includes(cityLowerCase)) {  
+        //         // && (this.state.animals[i].species.toLowerCase().includes(speciesLowerCase)) 
+        //         filteredByCity.push(this.state.animals[i])
+        //     }
+        // }
 
         const animalyByCity = filteredByCity.map(singleAnimal => {
             return (
-                <div key={singleAnimal._id} >
-                     <Link to={`/animals/${singleAnimal._id}`}>{singleAnimal.name} </Link>
+                <div style={right}>
+                    <div key={singleAnimal._id} >
+                        <li>
+                        <Link to={`/animals/${singleAnimal._id}`}>{singleAnimal.name} </Link> 
+                        </li>
+                    </div>
                 </div>
             )
         })
-    
-        return (
-            <div >
-                <h1>We are looking for a new home</h1>
-
+   
+            return (
                 <div>
-                <p>Select a city</p>
-                <input type="text" name="search" value={this.state.query} onChange={this.handleInput}/>
-                </div>
 
-                {animalyByCity}
-            </div>
-        )
+                <h1>Search</h1>
+
+                    <div style={left}>
+                        <div>
+                        <p>City you want to look for animals:</p>
+                        <input type="text" name="search" value={this.state.queryCity} onChange={this.handleInputC}/>
+                        </div>
+
+                        <div>
+                        <p>What kind of animal do you want us to show?</p>
+                        <input type="text" name="search" value={this.state.querySpecies} onChange={this.handleInput}/>
+                        </div>
+                    </div>
+
+                    {animalyByCity}
+                </div>
+            )
     }
+}
+
+const left = {
+    float: 'left',
+    marginLeft:'5%',
+    width: '60%',
+    backgroundColor:'white',
+    textAlign:'left',
+}
+
+const right = {
+    float: 'right',
+    marginRight:'5%',
+    width: '30%',
+    backgroundColor:'white',
 }
 
 

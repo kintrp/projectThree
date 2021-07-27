@@ -35,7 +35,7 @@ export default class MyAnimals extends Component {
 
         const mappedAnimals = animalsByUser.map(singleAnimal => {
             return (
-                <div key={singleAnimal._id} >
+                <div key={singleAnimal._id} style={right}>
                      <Link to={`/animals/${singleAnimal._id}`}>{singleAnimal.name} </Link>
                 </div> 
             )
@@ -45,10 +45,14 @@ export default class MyAnimals extends Component {
             <div >
                 <h1>Your animals</h1>
                 {mappedAnimals}
-
-                <Link to='/add'>Add animal</Link>
+                <div>
+                    <Link to='/add' className="buttonAdd">Add</Link>
+                </div>
             </div>
         )
-
     }
+}
+
+const right = {
+    backgroundColor:'yellow',
 }

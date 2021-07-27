@@ -3,9 +3,6 @@ import { signup } from '../services/auth';
 
 export default class SignUp extends Component {
 
-    // constructor(props) {
-    //     super(props);
-
         state = {
             username: '',
             email: '',
@@ -44,31 +41,60 @@ export default class SignUp extends Component {
         return (
             <div>
                 <h1>Hello future user... Plz, sign up below.</h1>
+
+            <div style={contentBox}>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="username">username:</label>
-                    <input
-                        type="text"
-                        name="username"
-                        value={this.state.username}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="username">email:</label>
-                    <input
-                        type="text"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="username">password:</label>
-                    <input
-                        type="text"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
+                    <tr>
+                        <td>
+                            <label htmlFor="username">username:</label>
+                        </td>
+                        <td>
+                            <input
+                            type="text"
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.handleChange}
+                            />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label htmlFor="username">email:</label>
+                        </td>
+                        <td>
+                            <input
+                            type="text"
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label htmlFor="username">password:</label>
+                        </td>
+                        <td>
+                            <input
+                            type="text"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                            />
+                        </td>
+                        
+                    </tr>
+
                     <button type="submit">signup</button>
                 </form>
             </div>
+            </div>
         )
     }
+}
+
+const contentBox = {
+    display: 'flex',
+    justifyContent:'center',
 }

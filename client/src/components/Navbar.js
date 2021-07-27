@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-// import Signup from './Signup';
-// import Login from './Login';
 import { logout } from '../services/auth';
 
 export default function Navbar(props) {
@@ -15,26 +13,19 @@ export default function Navbar(props) {
 	return (
 		<nav>
 			<ul>
-				{/* <li>
-					<Link to='/'>Home</Link>
-				</li> */}
+
 				{props.user ? (
 					<>
-						<li>
-							<Link to='/animals'>animals</Link>
-						</li>
-						<li>
-							<Link to='/' onClick={() => handleLogout()}>Logout</Link>
-						</li>
+						<div>
+							<Link to='/' onClick={() => handleLogout()} className="button">Logout</Link>
+						</div>
 					</>
 				) : (
 					<>
-						<li>
-							<Link to='/signup'>Sign up</Link>
-						</li>
-						<li>
-							<Link to='/login'>Log in</Link>
-						</li>
+						<div>
+							<Link to='/signup' className="button">Sign up</Link>
+							<Link to='/login' className="button">Log in</Link>
+						</div>
 					</>
 				)}
 			</ul>

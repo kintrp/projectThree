@@ -35,35 +35,67 @@ export default class Login extends Component {
     }
 
     render() {
+
         // console.log(this.state);
         return (
-        <div>
-            <h1>Plz login here... </h1>
-            <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="username">username:</label>
-                    <input
-                        type="text"
-                        name="username"
-                        value={this.state.username}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="username">email:</label>
-                    <input
-                        type="text"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="username">password:</label>
-                    <input
-                        type="text"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
-                    <button type="submit">login</button>
-                </form>
+            <div>
+                <h1>Plz, login here... </h1>
+                <div style={contentBox}>
+
+                    <form onSubmit={this.handleSubmit} >
+
+                            <tr>
+                                <td>
+                                    <label htmlFor="username">username: </label>
+                                </td>
+                                <td>
+                                    <input
+                                    type="text"
+                                    name="username"
+                                    value={this.state.username}
+                                    onChange={this.handleChange}
+                                    />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label htmlFor="username">email:</label>
+                                </td>
+                                <td>
+                                    <input
+                                    type="text"
+                                    name="email"
+                                    value={this.state.email}
+                                    onChange={this.handleChange}
+                                    />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label htmlFor="username">password:</label>
+                                </td>
+                                <td>
+                                    <input
+                                    type="text"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                    />
+                                </td>
+                            </tr>
+                            <button type="submit">login</button>                  
+                    </form>
+                </div>
+            
             </div>
-        )
+  
+    )
     }
+}
+
+const contentBox = {
+    display: 'flex',
+    justifyContent:'center',
 }
