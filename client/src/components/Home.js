@@ -6,7 +6,7 @@ export default class Home extends Component {
         return (
             <div style={contentBox}>
                 <div>
-                    <h1>Animal conect</h1>
+                    <h1>Animal connect</h1>
                     <p>The purpose of this website is to introduce animals to people.</p>
                 </div>
                 <div>
