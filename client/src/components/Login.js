@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { login } from '../services/auth';
+import { Link } from 'react-router-dom';
 
 export default class Login extends Component {
 
@@ -65,20 +66,6 @@ export default class Login extends Component {
                                 </td>
                             </tr>
 
-                            {/* <tr>
-                                <td>
-                                    <label htmlFor="username">email:</label>
-                                </td>
-                                <td>
-                                    <input
-                                    type="text"
-                                    name="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                    />
-                                </td>
-                            </tr> */}
-
                             <tr>
                                 <td>
                                     <label htmlFor="username">password:</label>
@@ -92,9 +79,16 @@ export default class Login extends Component {
                                     />
                                 </td>
                             </tr>
-                            <button type="submit">login</button>                  
+                        <button type="submit">login</button> 
                     </form>
                 </div>
+
+                <div style={contentBox}>
+                    <p>
+                        (Don't have an account yet? Redirect to <Link to='/signup'>sign in</Link>)
+                    </p>
+                </div>
+
             
             </div>
   
@@ -105,4 +99,6 @@ export default class Login extends Component {
 const contentBox = {
     display: 'flex',
     justifyContent:'center',
+    alignItems:'Center',
+    flexDirection:'Column',
 }

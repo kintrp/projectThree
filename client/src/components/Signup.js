@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { signup } from '../services/auth';
+import { Link } from 'react-router-dom';
 
 export default class SignUp extends Component {
 
@@ -60,20 +61,6 @@ export default class SignUp extends Component {
                         </td>
                     </tr>
 
-                    {/* <tr>
-                        <td>
-                            <label htmlFor="username">email:</label>
-                        </td>
-                        <td>
-                            <input
-                            type="text"
-                            name="email"
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                            />
-                        </td>
-                    </tr> */}
-
                     <tr>
                         <td>
                             <label htmlFor="username">password:</label>
@@ -118,10 +105,19 @@ export default class SignUp extends Component {
                             />
                         </td>
                     </tr>
-                    
-                    <button type="submit" >Create an account</button>
+                    <p>
+                        <button type="submit">Create an account</button>
+                    </p>
                 </form>
+                
             </div>
+
+                <div style={contentBox}>
+                    <p>
+                        (If you already have an account, plz redirect to <Link to='/login'>Log in</Link>)
+                    </p>
+                </div>
+                
             </div>
         )
     }
@@ -131,5 +127,9 @@ const contentBox = {
     display: 'flex',
     justifyContent:'center',
     alignItems:'Center',
+    flexDirection:'Column',
 }
+
+
+
 
