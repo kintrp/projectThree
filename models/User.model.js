@@ -12,7 +12,10 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Animal"
     }
-  ]
+  ],
+  type:{
+    type: String,
+  }
 });
 
 const User = model("User", userSchema);

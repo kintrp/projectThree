@@ -8,6 +8,8 @@ import AddAnimal from './components/AddAnimal';
 import ListAnimals from './components/ListAnimals';
 import DetailAnimal from './components/DetailAnimal';
 import MyAnimals from './components/MyAnimals';
+import Home from './components/Home';
+
 
 class App extends React.Component {
 
@@ -30,6 +32,11 @@ class App extends React.Component {
         <Switch>
 
         <Route
+          exact path='/'
+          render={props=> <Home setUser={this.setUser}{...props}/>}        
+        />
+
+        <Route
           exact path='/signup'
           render={props=> <Signup setUser={this.setUser}{...props}/>}        
         />
@@ -50,7 +57,7 @@ class App extends React.Component {
         />
 
         <Route
-          exact path='/animals/private'
+          exact path='/private'
           render={props=> <MyAnimals user={this.state.user} setUser={this.setUser}{...props}/>}        
         />
 

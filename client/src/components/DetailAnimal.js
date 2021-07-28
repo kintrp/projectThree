@@ -25,6 +25,7 @@ export default class DetailAnimal extends Component {
 					species: response.data.species,
 					sex: response.data.sex,
                     age: response.data.age,
+                    weight: response.data.weight,
                     description: response.data.description,
                     city: response.data.city,
                     castrated: response.data.castrated,
@@ -90,6 +91,16 @@ export default class DetailAnimal extends Component {
                             <strong> {this.state.age}</strong>
                         </td>
                     </tr>
+
+                    <tr>
+                        <td>
+                            kg: 
+                        </td>
+                        <td>
+                            <strong> {this.state.weight}</strong>
+                        </td>
+                    </tr>
+                
                     <tr>
                         <td>
                             castrated: 

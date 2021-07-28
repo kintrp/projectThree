@@ -35,13 +35,14 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/add', (req, res, next) => {
     console.log(req.body)
-    const {name, species, sex, age, description, city, castrated, imageUrl} = req.body;
+    const {name, species, sex, age, weight, description, city, castrated, imageUrl} = req.body;
     Animal.create ({
         imageUrl,
         name, 
         species,
         sex,
         age,
+        weight,
         description, 
         city,
         castrated,

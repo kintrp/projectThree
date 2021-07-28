@@ -4,8 +4,8 @@ const bcrypt=require('bcrypt');
 const passport =require('passport');
 
 router.post('/signup', (req, res, next) => {
-
-	const { username, password } = req.body;
+	console.log(req.body)
+	const { username, password, type } = req.body;
 	if (password.length < 8) {
 		return res.status(400).json({ message: 'Your password has to be 8 chars min' });
 	}
@@ -23,9 +23,13 @@ router.post('/signup', (req, res, next) => {
 				const hash = bcrypt.hashSync(password, salt);
 				// console.log(hash);
 
-				User.create({ username: username, password: hash })
+				User.create({ 
+					username: username, 
+					password: hash, 
+					type: type,
+				 })
 					.then(createdUser => {
-						// console.log(createdUser);
+						console.log(createdUser);
 
 						req.login(createdUser, err => {
 							if (err) {
@@ -62,6 +66,12 @@ router.post('/login', (req, res, next)=> {
 router.get('/loggedin', (req, res) => {
     // console.log('This is the user from session', req.user);
     res.json(req.user);
+})
+
+router.delete('/logout', (req, res) => {
+	console.log('logout')
+	req.logout();
+	res.status(200).json({ message: 'Successful Logout' });
 })
 
 module.exports = router;

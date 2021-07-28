@@ -5,7 +5,7 @@ export default class Login extends Component {
 
     state = {
         username: '',
-        email: '',
+        // email: '',
         password: '',
     }
 
@@ -18,11 +18,18 @@ export default class Login extends Component {
 					this.setState({
 						message: response.message,
 						username: '',
-						password: ''
+						password: '',
+                        type:'',
 					})
 				} else {
 					this.props.setUser(response);
-					this.props.history.push('/animals/private');
+                    // console.log(response)
+                    if (response.type === 'adopter') {
+                        this.props.history.push('/animals');
+                    }
+                    if (response.type === 'provider') {
+                        this.props.history.push('/private');
+                    }
 				}
 			})
 	}
@@ -58,7 +65,7 @@ export default class Login extends Component {
                                 </td>
                             </tr>
 
-                            <tr>
+                            {/* <tr>
                                 <td>
                                     <label htmlFor="username">email:</label>
                                 </td>
@@ -70,7 +77,7 @@ export default class Login extends Component {
                                     onChange={this.handleChange}
                                     />
                                 </td>
-                            </tr>
+                            </tr> */}
 
                             <tr>
                                 <td>

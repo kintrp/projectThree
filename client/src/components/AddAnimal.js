@@ -9,7 +9,8 @@ export default class AddAnimal extends Component {
         name: '', 
         species: '',
         sex: '', 
-        age:'', 
+        age:'',
+        weight:'', 
         description: '', 
         city: '', 
         castrated: '',
@@ -24,6 +25,7 @@ export default class AddAnimal extends Component {
            species: this.state.species,
            sex: this.state.sex,
            age: this.state.age,
+           weight: this.state.weight,
            description: this.state.description,
            city: this.state.city,
            castrated: this.state.castrated,
@@ -42,7 +44,7 @@ export default class AddAnimal extends Component {
             })
             .catch(err=>console.log(err));
 
-    this.props.history.push('/animals/private');
+    this.props.history.push('/private');
   };
 
 
@@ -130,6 +132,19 @@ export default class AddAnimal extends Component {
                                 type="text"
                                 name="age"
                                 value={this.state.age}
+                                onChange={this.handleChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor="name">kg:</label>
+                            </td>
+                            <td>
+                                <input
+                                type="text"
+                                name="weight"
+                                value={this.state.weight}
                                 onChange={this.handleChange}
                                 />
                             </td>

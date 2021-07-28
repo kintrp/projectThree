@@ -59,14 +59,6 @@ export default class ListAnimals extends Component {
 
         console.log(filteredByCity)
 
-
-        // for (let i = 0; i < this.state.animals.length; i++) {
-        //     if (this.state.animals[i].city.toLowerCase().includes(cityLowerCase)) {  
-        //         // && (this.state.animals[i].species.toLowerCase().includes(speciesLowerCase)) 
-        //         filteredByCity.push(this.state.animals[i])
-        //     }
-        // }
-
         const animalyByCity = filteredByCity.map(singleAnimal => {
             return (
                 <div style={right}>
@@ -83,20 +75,24 @@ export default class ListAnimals extends Component {
                 <div>
 
                 <h1>Search</h1>
+                <div>
 
                     <div style={left}>
+
                         <div>
-                        <p>City you want to look for animals:</p>
-                        <input type="text" name="search" value={this.state.queryCity} onChange={this.handleInputC}/>
+                        <p>What animal are you looking for?</p>
+                        <input type="text" name="search" value={this.state.querySpecies} onChange={this.handleInput}/>
                         </div>
 
                         <div>
-                        <p>What kind of animal do you want us to show?</p>
-                        <input type="text" name="search" value={this.state.querySpecies} onChange={this.handleInput}/>
+                        <p>Your area:</p>
+                        <input type="text" name="search" value={this.state.queryCity} onChange={this.handleInputC}/>
                         </div>
+                       
                     </div>
 
                     {animalyByCity}
+                </div>
                 </div>
             )
     }

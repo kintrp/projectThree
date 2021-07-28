@@ -5,22 +5,23 @@ export default class SignUp extends Component {
 
         state = {
             username: '',
-            email: '',
             password: '',
-            message: '',
+            type:'',
+            // message: '',
         }
    
     handleSubmit = event => {
         event.preventDefault();
     
-        const { username, email, password } = this.state;
+        const { username, password, type } = this.state;
     
-        signup(username, email, password).then(data => {
+        signup(username, password, type).then(data => {
           if (data.message) {
             this.setState({
               message: data.message,
               username: '',
-              password: ''
+              password: '',
+              type:'',
             });
           } else {
             this.props.setUser(data);
@@ -30,6 +31,7 @@ export default class SignUp extends Component {
       };
 
     handleChange = e => {
+        // console.log(e.target.name)
         const {name, value} = e.target;
         this.setState({
             [name]: value
@@ -58,7 +60,7 @@ export default class SignUp extends Component {
                         </td>
                     </tr>
 
-                    <tr>
+                    {/* <tr>
                         <td>
                             <label htmlFor="username">email:</label>
                         </td>
@@ -70,7 +72,8 @@ export default class SignUp extends Component {
                             onChange={this.handleChange}
                             />
                         </td>
-                    </tr>
+                    </tr> */}
+
                     <tr>
                         <td>
                             <label htmlFor="username">password:</label>
@@ -86,7 +89,37 @@ export default class SignUp extends Component {
                         
                     </tr>
 
-                    <button type="submit">signup</button>
+                    <tr>
+                        <td>
+                            <label> I want to adopt:</label>
+                        </td>
+                        <td>
+                            <input
+                            name="type"
+                            type="checkbox"
+                            value='adopter'
+                            checked={this.state.adopter}
+                            onChange={this.handleChange} 
+                            />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>    
+                            <label> Offer your animal:</label>
+                        </td>
+                        <td>
+                            <input
+                            name="type"
+                            type="checkbox"
+                            value='provider'
+                            checked={this.state.provider}
+                            onChange={this.handleChange} 
+                            />
+                        </td>
+                    </tr>
+                    
+                    <button type="submit" >Create an account</button>
                 </form>
             </div>
             </div>
@@ -97,4 +130,6 @@ export default class SignUp extends Component {
 const contentBox = {
     display: 'flex',
     justifyContent:'center',
+    alignItems:'Center',
 }
+
